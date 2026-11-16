@@ -88,7 +88,7 @@ python3 /path/to/plannotator-trace-guard/plannotator_trace_guard.py --json /tmp/
 python3 tests/run.py
 ```
 
-当前 **23 passed, 0 failed**，其中 7 条是行为用例（subprocess 退出码 0/1/2、`--json` 可被 `json.load` 解析、`--only` 过滤、`--windows` 翻转 verdict、`--list` 条数）。
+当前 **25 passed, 0 failed**，其中 8 条是行为用例（subprocess 退出码 0/1/2、`--json` 可被 `json.load` 解析、`--only` 过滤、`--windows` 翻转 verdict、`--list` 条数、`examples/out` 与全新运行逐字段一致）。
 
 ## Fidelity（防止「上游没这么写，我们却这么断言」）
 
@@ -98,7 +98,15 @@ python3 tests/run.py
 python3 tools/check_fidelity.py /path/to/update-lifecycle.qnt
 ```
 
-它会逐条核对该文件里确实存在这些 `val` 名字、且常量数值与本工具一致；任何不一致以退出码 `1` 报出。
+它做两层核对：(1) 13 个常量数值 + 14 个 `val` 名字必须与 spec 一致；(2) **逐性质比对常量引用**——把 spec 里每条 `val` 正文提到的常量集合，与该性质的实现正文提到的常量集合做集合相等判定（`NoTwoInstallers` 只许出现 `LOCK_STALE`/`LOCK_LIVE_MAX` 这类）。任何不一致以退出码 `1` 报出；把 spec 里某个常量改掉即可看到它报 `MISMATCH constant …`。实测：`ok: 13 constants, 14 property names, 14 property bodies agree`。
+
+## 与同类项目的差异
+
+搜过（命令与命中见仓库外的阶段 D 记录）：`gh search repos "quint itf trace"`、`gh search repos "ITF trace validator"` 均 0 命中；
+`gh search code "out-itf"` 命中 21 处，全部是**产出** trace 的代码（含上游 `spec/simulate.sh`、`spec/show-trace.ts`）。
+elizaOS 有 `packages/*/quint/check-*.mjs` 这类逐性质手写脚本，但那是它自己内部 harness 的专用检查、
+每加一条性质就要新写一个脚本，不能读任意 ITF trace；本工具只依赖 spec 里已声明的 `val` 名字与常量，
+换 spec 后重跑 `tools/check_fidelity.py` 即可，不复制任何上游代码。
 
 ## 局限
 

@@ -265,6 +265,69 @@ def test_report_shape_is_stable():
         assert p["source"].startswith("https://github.com/backnotprop/plannotator/")
 
 
+@test
+def test_fidelity_script_agrees_and_catches_drift():
+    """Mechanism test for tools/check_fidelity.py on a generated spec file."""
+    import inspect
+    spec = importlib.util.spec_from_file_location(
+        "cf", os.path.join(ROOT, "tools", "check_fidelity.py"))
+    cf = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cf)
+
+    def build(lock_live_max=None):
+        lines = []
+        for c in cf.CONSTANTS:
+            value = getattr(tg, c)
+            if c == "LOCK_LIVE_MAX" and lock_live_max is not None:
+                value = lock_live_max
+            lines.append("  pure val %s = %d" % (c, value))
+        lines.append("  pure val WINDOWS = false")
+        lines.append("  pure val NOTES_FIX = false")
+        for name, _kind, fn, _req in tg.PROPERTIES:
+            refs = " ".join(sorted(cf.upper_refs(inspect.getsource(fn)))) or "true"
+            lines.append("  /// fixture body")
+            lines.append("  val %s = %s" % (name, refs))
+        lines.append("}")
+        return "\n".join(lines) + "\n"
+
+    good = os.path.join(TMP, "spec-good.qnt")
+    bad = os.path.join(TMP, "spec-bad.qnt")
+    open(good, "w").write(build())
+    open(bad, "w").write(build(lock_live_max=tg.LOCK_LIVE_MAX + 1))
+    script = os.path.join(ROOT, "tools", "check_fidelity.py")
+    p_good = subprocess.run([sys.executable, script, good], cwd=ROOT, capture_output=True, text=True)
+    p_bad = subprocess.run([sys.executable, script, bad], cwd=ROOT, capture_output=True, text=True)
+    assert p_good.returncode == 0, (p_good.stdout, p_good.stderr)
+    assert "14 property bodies agree" in p_good.stdout
+    assert p_bad.returncode == 1 and "LOCK_LIVE_MAX" in p_bad.stdout
+
+
+@test
+def test_examples_out_match_a_fresh_run():
+    """Every examples/out JSON was produced by the tool on examples/in."""
+    import glob
+    out_dir = os.path.join(ROOT, "examples", "out")
+    names = sorted(os.path.basename(p) for p in glob.glob(os.path.join(out_dir, "*.json")))
+    assert names, "examples/out is empty"
+    mapping = {
+        "clean.json": (["--json", "examples/in/clean.itf.json"], 0),
+        "whats-new-link-missing.json": (["--json", "examples/in/whats-new-link-missing.itf.json"], 1),
+        "lock-overlap-posix.json": (["--json", "examples/in/lock-overlap.itf.json"], 1),
+        "lock-overlap-windows.json": (["--json", "--windows", "examples/in/lock-overlap.itf.json"], 0),
+    }
+    for name in names:
+        assert name in mapping, "unexpected example output: %s" % name
+        argv, expected_rc = mapping[name]
+        proc = run(argv)
+        assert proc.returncode == expected_rc, (name, proc.returncode, proc.stdout)
+        fresh = json.loads(proc.stdout)
+        stored = json.load(open(os.path.join(out_dir, name)))
+        stored.pop("observed_exit_code", None)
+        fresh.pop("trace", None)
+        stored.pop("trace", None)
+        assert fresh == stored, "%s is stale: regenerate with tools/make_examples.py" % name
+
+
 def main():
     passed = failed = 0
     for fn in RESULTS:
