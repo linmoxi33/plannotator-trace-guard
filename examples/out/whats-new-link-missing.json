@@ -1,0 +1,143 @@
+{
+  "tool": "plannotator-trace-guard",
+  "version": "0.1.0",
+  "trace": "examples/in/whats-new-link-missing.itf.json",
+  "state_var": "s",
+  "ids": [
+    1,
+    2,
+    3
+  ],
+  "flags": {
+    "windows": false,
+    "notes_fix": false,
+    "whats_new_fix": false,
+    "draft_flow": false
+  },
+  "states": 3,
+  "properties": [
+    {
+      "name": "NoTwoInstallers",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L605-608",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "BinaryAlwaysThere",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L611",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "InboxCanStart",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L614",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "NothingFetchedWhileChecksOff",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L617",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "RequestRateBounded",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L621",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "StaleLockRecovered",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L625-626",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "PersonCanUpdate",
+      "kind": "safety",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L630",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "WhatsNewWithinRun",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L652-654",
+      "states_checked": 3,
+      "violations": [
+        {
+          "step": 2,
+          "act": "tick",
+          "now": 100,
+          "detail": "WhatsNew owed for v=2 but link=0"
+        }
+      ]
+    },
+    {
+      "name": "WhatsNewAfterAbandonedRequest",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L657-659",
+      "states_checked": 3,
+      "violations": [
+        {
+          "step": 2,
+          "act": "tick",
+          "now": 100,
+          "detail": "WhatsNew owed for v=2 but link=0"
+        }
+      ]
+    },
+    {
+      "name": "WhatsNewAfterBlip",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L662-664",
+      "states_checked": 3,
+      "violations": [
+        {
+          "step": 2,
+          "act": "tick",
+          "now": 100,
+          "detail": "WhatsNew owed for v=2 but link=0"
+        }
+      ]
+    },
+    {
+      "name": "WhatsNewAfterUpdate",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L668-673",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "NewReleaseOffered",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L676-679",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "NewReleaseOfferedAfterAbandonedCheck",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L683-686",
+      "states_checked": 3,
+      "violations": []
+    },
+    {
+      "name": "FailedUpdateShown",
+      "kind": "bounded-eventually",
+      "source": "https://github.com/backnotprop/plannotator/blob/main/spec/update-lifecycle.qnt#L691-696",
+      "states_checked": 3,
+      "violations": []
+    }
+  ],
+  "violations_total": 3,
+  "verdict": "fail",
+  "exit_code": 1,
+  "observed_exit_code": 1
+}

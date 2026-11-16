@@ -1,0 +1,3 @@
+#!/bin/sh
+# Wrapper so the tool can be run from anywhere without installing it.
+exec python3 "$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)/plannotator_trace_guard.py" "$@"

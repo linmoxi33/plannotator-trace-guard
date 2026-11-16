@@ -1,0 +1,83 @@
+{
+  "#meta": {
+    "format": "ITF",
+    "source": "quint",
+    "module": "onMain"
+  },
+  "vars": [
+    "s"
+  ],
+  "states": [
+    {
+      "#meta": {
+        "index": 0
+      },
+      "s": {
+        "act": "launch",
+        "now": 100,
+        "inst": {
+          "1": {
+            "phase": "locked",
+            "v": 2,
+            "person": true,
+            "startedAt": 0
+          },
+          "2": {
+            "phase": "spawned",
+            "v": 3,
+            "person": false,
+            "startedAt": 5
+          },
+          "3": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          }
+        },
+        "binOk": true,
+        "binV": 1,
+        "startFailed": false,
+        "offFetch": false,
+        "minCheckGap": 10,
+        "minNotesGap": 15,
+        "lockHeld": true,
+        "lockKind": "wrapper",
+        "lockAt": 0,
+        "lockOwner": 1,
+        "ibAlive": true,
+        "ibRuns": 1,
+        "ibOnDisk": 1,
+        "ibStartedAt": 0,
+        "ibLastTick": 100,
+        "ibUpdated": 0,
+        "ibInflight": {},
+        "notes": {},
+        "latest": 1,
+        "latestAt": 90,
+        "published": 1,
+        "pubAt": {},
+        "body": {},
+        "oursAt": {},
+        "nf": {},
+        "updatedTo": {},
+        "whatsNewSeen": {},
+        "abandoned": {},
+        "abandonedCheckAt": -1,
+        "pendingPerson": true,
+        "pendingV": 2,
+        "personV": 0,
+        "personOutcome": "none",
+        "resultV": 0,
+        "resultCode": 0,
+        "checksOn": true,
+        "autoOn": true,
+        "netUp": true,
+        "netEverDown": false,
+        "netStableSince": 0,
+        "checksOnSince": 0,
+        "tickAfterPersonEnd": false
+      }
+    }
+  ]
+}

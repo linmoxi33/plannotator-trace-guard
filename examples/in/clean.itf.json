@@ -1,0 +1,225 @@
+{
+  "#meta": {
+    "format": "ITF",
+    "source": "quint",
+    "module": "onMain"
+  },
+  "vars": [
+    "s"
+  ],
+  "states": [
+    {
+      "#meta": {
+        "index": 0
+      },
+      "s": {
+        "act": "init",
+        "now": 0,
+        "inst": {
+          "1": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          },
+          "2": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          },
+          "3": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          }
+        },
+        "binOk": true,
+        "binV": 1,
+        "startFailed": false,
+        "offFetch": false,
+        "minCheckGap": 10,
+        "minNotesGap": 15,
+        "lockHeld": false,
+        "lockKind": "none",
+        "lockAt": -99999,
+        "lockOwner": 0,
+        "ibAlive": true,
+        "ibRuns": 1,
+        "ibOnDisk": 1,
+        "ibStartedAt": 0,
+        "ibLastTick": 100,
+        "ibUpdated": 0,
+        "ibInflight": {},
+        "notes": {},
+        "latest": 1,
+        "latestAt": 90,
+        "published": 1,
+        "pubAt": {},
+        "body": {},
+        "oursAt": {},
+        "nf": {},
+        "updatedTo": {},
+        "whatsNewSeen": {},
+        "abandoned": {},
+        "abandonedCheckAt": -1,
+        "pendingPerson": false,
+        "pendingV": 0,
+        "personV": 0,
+        "personOutcome": "none",
+        "resultV": 0,
+        "resultCode": 0,
+        "checksOn": true,
+        "autoOn": true,
+        "netUp": true,
+        "netEverDown": false,
+        "netStableSince": 0,
+        "checksOnSince": 0,
+        "tickAfterPersonEnd": false
+      }
+    },
+    {
+      "#meta": {
+        "index": 1
+      },
+      "s": {
+        "act": "doCliUpdateNow",
+        "now": 1,
+        "inst": {
+          "1": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          },
+          "2": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          },
+          "3": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          }
+        },
+        "binOk": true,
+        "binV": 1,
+        "startFailed": false,
+        "offFetch": false,
+        "minCheckGap": 10,
+        "minNotesGap": 15,
+        "lockHeld": false,
+        "lockKind": "none",
+        "lockAt": -99999,
+        "lockOwner": 0,
+        "ibAlive": true,
+        "ibRuns": 1,
+        "ibOnDisk": 1,
+        "ibStartedAt": 0,
+        "ibLastTick": 100,
+        "ibUpdated": 0,
+        "ibInflight": {},
+        "notes": {},
+        "latest": 1,
+        "latestAt": 90,
+        "published": 1,
+        "pubAt": {},
+        "body": {},
+        "oursAt": {},
+        "nf": {},
+        "updatedTo": {},
+        "whatsNewSeen": {},
+        "abandoned": {},
+        "abandonedCheckAt": -1,
+        "pendingPerson": false,
+        "pendingV": 0,
+        "personV": 0,
+        "personOutcome": "none",
+        "resultV": 0,
+        "resultCode": 0,
+        "checksOn": true,
+        "autoOn": true,
+        "netUp": true,
+        "netEverDown": false,
+        "netStableSince": 0,
+        "checksOnSince": 0,
+        "tickAfterPersonEnd": false
+      }
+    },
+    {
+      "#meta": {
+        "index": 2
+      },
+      "s": {
+        "act": "tick",
+        "now": 100,
+        "inst": {
+          "1": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          },
+          "2": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          },
+          "3": {
+            "phase": "unused",
+            "v": 1,
+            "person": false,
+            "startedAt": 0
+          }
+        },
+        "binOk": true,
+        "binV": 1,
+        "startFailed": false,
+        "offFetch": false,
+        "minCheckGap": 10,
+        "minNotesGap": 15,
+        "lockHeld": false,
+        "lockKind": "none",
+        "lockAt": -99999,
+        "lockOwner": 0,
+        "ibAlive": true,
+        "ibRuns": 1,
+        "ibOnDisk": 1,
+        "ibStartedAt": 0,
+        "ibLastTick": 100,
+        "ibUpdated": 0,
+        "ibInflight": {},
+        "notes": {},
+        "latest": 1,
+        "latestAt": 90,
+        "published": 1,
+        "pubAt": {},
+        "body": {},
+        "oursAt": {},
+        "nf": {},
+        "updatedTo": {},
+        "whatsNewSeen": {},
+        "abandoned": {},
+        "abandonedCheckAt": -1,
+        "pendingPerson": false,
+        "pendingV": 0,
+        "personV": 0,
+        "personOutcome": "none",
+        "resultV": 0,
+        "resultCode": 0,
+        "checksOn": true,
+        "autoOn": true,
+        "netUp": true,
+        "netEverDown": false,
+        "netStableSince": 0,
+        "checksOnSince": 0,
+        "tickAfterPersonEnd": false
+      }
+    }
+  ]
+}
